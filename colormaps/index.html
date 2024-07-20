@@ -5511,6 +5511,31 @@
 
       <p>List all available colormaps. See a complete lost of colormaps at https://matplotlib.org/stable/tutorials/colors/colormaps.html.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>add_extra</code></td>
+        <td><code>bool</code></td>
+        <td><p>If True, include additional colormaps, Default False,</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>lowercase</code></td>
+        <td><code>bool</code></td>
+        <td><p>If True, convert colormaps names to lowercase, Default is False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
 <p><strong>Returns:</strong></p>
 <table>
   <thead>
@@ -5530,6 +5555,10 @@
           <summary>Source code in <code>leafmap/colormaps.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">list_colormaps</span><span class="p">(</span><span class="n">add_extra</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">lowercase</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;List all available colormaps. See a complete lost of colormaps at https://matplotlib.org/stable/tutorials/colors/colormaps.html.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        add_extra (bool, optional): If True, include additional colormaps, Default False,</span>
+<span class="sd">        lowercase (bool, optional): If True, convert colormaps names to lowercase, Default is False.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: The list of colormap names.</span>
