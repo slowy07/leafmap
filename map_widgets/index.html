@@ -5370,15 +5370,15 @@ Colorbar            (<span title="ipywidgets.widgets.widget_output.Output">Outpu
 
     <span class="k">def</span> <span class="nf">_get_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
         <span class="n">default_dims</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;horizontal&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="s2">&quot;vertical&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)}</span>
-        <span class="k">if</span> <span class="n">orientation</span> <span class="ow">in</span> <span class="n">default_dims</span><span class="p">:</span>
-            <span class="n">default</span> <span class="o">=</span> <span class="n">default_dims</span><span class="p">[</span><span class="n">orientation</span><span class="p">]</span>
-            <span class="k">return</span> <span class="p">(</span>
-                <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="n">default</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-                <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="n">default</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="k">if</span> <span class="n">orientation</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">default_dims</span><span class="p">:</span>
+            <span class="n">valid_orientations</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">default_dims</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;orientation must be one of [</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">valid_orientations</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span>
             <span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;orientation must be one of [</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">default_dims</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">].&quot;</span>
-        <span class="p">)</span>
+        <span class="n">default_width</span><span class="p">,</span> <span class="n">default_height</span> <span class="o">=</span> <span class="n">default_dims</span><span class="p">[</span><span class="n">orientation</span><span class="p">]</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="n">default_width</span><span class="p">)</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="n">default_height</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span>
 </code></pre></div>
         </details>
 
